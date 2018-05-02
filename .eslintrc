@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "eslint-config-react-app",
+  ],
+  "plugins": [
+  ],
+  "env": {
+  },
+  "rules": {
+    "no-console": [1, { "allow": ["warn", "error"] }]
+  }
+}

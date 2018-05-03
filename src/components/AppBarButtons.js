@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import Button from 'material-ui/Button';
 import { withStyles } from 'material-ui/styles';
-import { isMobile } from 'react-device-detect';
+import IconButton from 'material-ui/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import Menu, { MenuItem } from 'material-ui/Menu';
 
 const styles = theme => ({
   button: {
     textTransform: 'none',
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
   },
 });
 
@@ -15,19 +21,28 @@ class AppBarButtons extends Component {
     this.state = {
       width: 800,
       height: 182,
+      anchorEl: null,
     };
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.updateDimensions();
     window.addEventListener('resize', this.updateDimensions.bind(this));
-  }
+  };
 
-  componentWillUnmount() {
+  componentWillUnmount = () => {
     window.removeEventListener('resize', this.updateDimensions.bind(this));
-  }
+  };
 
-  updateDimensions() {
+  handleClick = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
+
+  updateDimensions = () => {
     if (window.innerWidth < 500) {
       this.setState({ width: 450, height: 102 });
     } else {
@@ -35,10 +50,10 @@ class AppBarButtons extends Component {
       const update_height = Math.round(update_width / 4.4);
       this.setState({ width: update_width, height: update_height });
     }
-  }
+  };
   render() {
     const { classes } = this.props;
-    const { width } = this.state;
+    const { width, anchorEl } = this.state;
     if (width > 500) {
       return (
         <div>
@@ -54,7 +69,30 @@ class AppBarButtons extends Component {
         </div>
       );
     }
-    return <div> OPA </div>;
+    return (
+      <div>
+        <IconButton
+          className={classes.menuButton}
+          color="inherit"
+          aria-label="Menu"
+          aria-owns={anchorEl ? 'simple-menu' : null}
+          aria-haspopup="true"
+          onClick={this.handleClick}
+        >
+          <MenuIcon />
+        </IconButton>
+        <Menu
+          id="simple-menu"
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={this.handleClose}
+        >
+          <MenuItem onClick={this.handleClose}>The Queen City</MenuItem>
+          <MenuItem onClick={this.handleClose}> My Reservations</MenuItem>
+          <MenuItem onClick={this.handleClose}>Guide</MenuItem>
+        </Menu>
+      </div>
+    );
   }
 }
 

@@ -4,9 +4,9 @@ import { red } from 'material-ui/colors';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: '#931f1f',
-      main: '#931f1f',
-      dark: '#931f1f',
+      light: '#F98100',
+      main: '#F98100',
+      dark: '#F98100',
       contrastText: 'white',
     },
     secondary: {
@@ -17,7 +17,7 @@ const theme = createMuiTheme({
     },
     error: red,
     background: {
-      appBar: '#FFFFFF',
+      appBar: 'trasparent',
     },
   },
 });

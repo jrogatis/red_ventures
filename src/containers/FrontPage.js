@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import logo from '../images/hero.jpg';
 import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
@@ -9,6 +8,9 @@ import Toolbar from 'material-ui/Toolbar';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import AppBarButtons from '../components/AppBarButtons';
 import crown from '../images/crown-white.svg';
+import Footer from '../components/Footer';
+import DateSelector from './DateSelector';
+import HotelList from '../containers/HotelsList';
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -40,8 +42,11 @@ class FrontPage extends Component {
           <Toolbar>
             <AppBarButtons />
           </Toolbar>
-          <CardMedia className={classes.media} image={crown} />
         </AppBar>
+        <CardMedia className={classes.media} image={crown} />
+        <DateSelector />
+        <HotelList />
+        <Footer />
       </Paper>
     );
   }

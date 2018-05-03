@@ -7,15 +7,13 @@ import Typography from 'material-ui/Typography';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
-import Button from 'material-ui/Button';
-import IconButton from 'material-ui/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import AppBarButtons from '../components/AppBarButtons';
+import crown from '../images/crown-white.svg';
 
 const styles = theme => ({
   root: theme.mixins.gutters({
-    paddingTop: 0,
-    paddingBottom: 16,
-    marginTop: 0,
+    margin: '0,0.0.0',
+    Padding: '0,0,16,9',
   }),
   media: {
     height: 0,
@@ -24,6 +22,9 @@ const styles = theme => ({
   },
   appBar: {
     backgroundColor: 'transparent',
+  },
+  button: {
+    textTransform: 'none',
   },
 });
 
@@ -37,13 +38,10 @@ class FrontPage extends Component {
       <Paper className={classes.root} elevation={4}>
         <AppBar position="sticky" className={classes.appBar}>
           <Toolbar>
-            <Button color="inherit">The Queen City</Button>
-            <Button color="inherit">My Reservations</Button>
-            <Button color="inherit">Guide</Button>
+            <AppBarButtons />
           </Toolbar>
+          <CardMedia className={classes.media} image={crown} />
         </AppBar>
-
-        <CardMedia className={classes.media} image={logo} />
       </Paper>
     );
   }

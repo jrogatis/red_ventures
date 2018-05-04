@@ -3,6 +3,7 @@ import { withStyles } from 'material-ui/styles';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import { Typography, Button, Grid } from 'material-ui';
 import Stars from './Stars';
+import PropTypes from 'prop-types';
 
 const styles = theme => ({
   root: {
@@ -90,4 +91,7 @@ const HotelItem = props => {
   );
 };
 
+HotelItem.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 export default withStyles(styles)(HotelItem);

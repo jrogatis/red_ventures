@@ -5,7 +5,6 @@ import { withStyles } from 'material-ui/styles';
 import IconButton from 'material-ui/IconButton';
 import { Facebook, Twitter, Instagram } from 'mdi-material-ui';
 import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
 
 const styles = theme => ({
   root: theme.mixins.gutters({

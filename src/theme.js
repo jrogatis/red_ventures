@@ -20,6 +20,9 @@ const theme = createMuiTheme({
       appBar: 'trasparent',
     },
   },
+  typography: {
+    fontFamily: 'Heebo',
+  },
 });
 
 export default theme;

@@ -8,7 +8,7 @@ import DateFieldsText from './DateFieldsText';
 import moment from 'moment';
 import Button from 'material-ui/Button';
 import { connect } from 'react-redux';
-import { fetchHotels } from '../actions';
+import { fetchHotels, fetchDateRange } from '../actions';
 
 const styles = theme => ({
   button: {
@@ -44,20 +44,15 @@ class DatePicker extends Component {
   };
   constructor(props) {
     super(props);
-    this.state = this.getInitialState();
-  }
-  getInitialState() {
-    return {
+    this.state = {
       from: undefined,
       to: undefined,
     };
   }
+
   handleDayClick(day) {
     const range = DateUtils.addDayToRange(day, this.state);
     this.setState(range);
-  }
-  handleResetClick() {
-    this.setState(this.getInitialState());
   }
 
   render() {
@@ -116,8 +111,10 @@ DatePicker.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = ({ hotels }) => ({
+const mapStateToProps = ({ hotels, dateRanges }) => ({
   hotels,
 });
 
-export default connect(mapStateToProps, { fetchHotels })(withStyles(styles)(DatePicker));
+export default connect(mapStateToProps, { fetchHotels, fetchDateRange })(
+  withStyles(styles)(DatePicker),
+);

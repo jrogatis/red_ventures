@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
+import { CardMedia } from 'material-ui/Card';
 import AppBarButtons from '../components/AppBarButtons';
 import crown from '../images/crown-white-min.jpg';
 import Footer from '../components/Footer';
@@ -13,10 +12,9 @@ import DateSelector from './DateSelector';
 import HotelList from '../containers/HotelsList';
 
 const styles = theme => ({
-  root: theme.mixins.gutters({
-    margin: '0,0.0.0',
-    Padding: '0,0,16,9',
-  }),
+  root: {
+    margin: '0,0,10,0',
+  },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9

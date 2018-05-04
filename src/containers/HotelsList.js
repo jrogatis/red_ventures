@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import { connect } from 'react-redux';
+import HotelItem from '../components/HotelItem';
 const styles = theme => ({
   root: theme.mixins.gutters({
     paddingTop: 16,
     paddingBottom: 16,
     borderRadius: '5px',
-    zIndex: 9999,
   }),
 });
 
@@ -20,17 +20,24 @@ class HotelsList extends Component {
     const {
       hotels: { hotels },
     } = this.props;
-    console.log('hotels', hotels);
     return hotels ? (
-      <div style={{ zIndex: 9999, 'background-color': 'red' }}>
-        <ul>
-          {hotels.map(hotel => (
-            <li key={hotel.name}>
-              {' '}
-              <div> {hotel.description}</div>{' '}
-            </li>
-          ))}
-        </ul>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          marginTop: 20,
+        }}
+      >
+        aqui vao os ................................
+        <div
+          style={{
+            display: 'flex',
+            alignContent: 'center',
+            flexDirection: 'column',
+          }}
+        >
+          {hotels.map(hotel => <HotelItem hotel={hotel} />)}
+        </div>
       </div>
     ) : (
       <div> </div>

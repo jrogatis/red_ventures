@@ -38,7 +38,7 @@ class FrontPage extends Component {
     const { classes } = this.props;
     return (
       <Paper className={classes.root} elevation={4}>
-        <AppBar position="sticky" className={classes.appBar}>
+        <AppBar position="static" className={classes.appBar}>
           <Toolbar>
             <AppBarButtons />
           </Toolbar>

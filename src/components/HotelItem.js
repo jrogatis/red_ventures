@@ -1,10 +1,13 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
-import { Typography, Button } from 'material-ui';
+import { Typography, Button, Grid } from 'material-ui';
 import Stars from './Stars';
 
 const styles = theme => ({
+  root: {
+    width: 1200,
+  },
   card: {
     display: 'flex',
     flexDirection: 'row',
@@ -58,28 +61,30 @@ const styles = theme => ({
 const HotelItem = props => {
   const { classes, hotel } = props;
   return (
-    <div style={{ width: 1200 }} key={hotel.name}>
+    <div className={classes.root} key={hotel.name}>
       <div style={{ display: 'flex', flexDirection: 'row' }}>
         <CardMedia className={classes.image} image={hotel.image} title={hotel.name} />
-        <Card key={hotel.name} className={classes.card}>
-          <div className={classes.details}>
-            <CardContent className={classes.content}>
-              <Stars rate={hotel.rate} />
-              <Typography variant="headline">{hotel.name}</Typography>
-              <Typography variant="subheading" color="textSecondary">
-                {hotel.description}
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small" className={classes.buttonBook}>
-                Book Now
-              </Button>
-              <Button size="small" className={classes.buttonPrice}>
-                Price history
-              </Button>
-            </CardActions>
-          </div>
-        </Card>
+        <Grid item xm={6} sm={6} md={8} lg={10} xl={10}>
+          <Card key={hotel.name} className={classes.card}>
+            <Grid className={classes.details}>
+              <CardContent className={classes.content}>
+                <Stars rate={hotel.rate} />
+                <Typography variant="headline">{hotel.name}</Typography>
+                <Typography variant="subheading" color="textSecondary">
+                  {hotel.description}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button size="small" className={classes.buttonBook}>
+                  Book Now
+                </Button>
+                <Button size="small" className={classes.buttonPrice}>
+                  Price history
+                </Button>
+              </CardActions>
+            </Grid>
+          </Card>
+        </Grid>
       </div>
     </div>
   );

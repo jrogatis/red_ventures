@@ -7,7 +7,7 @@ import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import AppBarButtons from '../components/AppBarButtons';
-import crown from '../images/crown-white.svg';
+import crown from '../images/crown-white.jpg';
 import Footer from '../components/Footer';
 import DateSelector from './DateSelector';
 import HotelList from '../containers/HotelsList';

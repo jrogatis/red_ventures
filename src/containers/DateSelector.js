@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Typography, Paper } from 'material-ui';
 import { withStyles } from 'material-ui/styles';
 import PropTypes from 'prop-types';
-import DatePicker from '../components/datePicker';
+import DatePicker from '../components/DatePicker';
 
 const styles = theme => ({
   root: theme.mixins.gutters({

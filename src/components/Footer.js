@@ -27,25 +27,33 @@ const styles = theme => ({
     marginBotton: 30,
     backgroundColor: '#F98100',
   },
+  text: {
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '12px',
+    },
+  },
 });
-const Footer = props => (
-  <AppBar position="static" className={props.classes.appBar}>
-    <Toolbar>
-      <IconButton className={props.classes.button} aria-label="Menu">
-        <Facebook />
-      </IconButton>
-      <IconButton className={props.classes.button} aria-label="Menu">
-        <Twitter />
-      </IconButton>
-      <IconButton className={props.classes.button} aria-label="Menu">
-        <Instagram />
-      </IconButton>
-    </Toolbar>
-    <Typography variant="subheading" align="center">
-      © 2004-2017 Visit Charlotte. All Rights Reserved. 500 S. College Street, Suite 300, Charlotte,
-      NC 28202
-    </Typography>
-  </AppBar>
-);
+const Footer = props => {
+  const { classes } = props;
+  return (
+    <AppBar position="static" className={props.classes.appBar}>
+      <Toolbar>
+        <IconButton className={props.classes.button} aria-label="Menu">
+          <Facebook />
+        </IconButton>
+        <IconButton className={props.classes.button} aria-label="Menu">
+          <Twitter />
+        </IconButton>
+        <IconButton className={props.classes.button} aria-label="Menu">
+          <Instagram />
+        </IconButton>
+      </Toolbar>
+      <Typography variant="subheading" align="center" className={classes.text}>
+        © 2004-2017 Visit Charlotte. All Rights Reserved. 500 S. College Street, Suite 300,
+        Charlotte, NC 28202
+      </Typography>
+    </AppBar>
+  );
+};
 
 export default withStyles(styles)(Footer);

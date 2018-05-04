@@ -19,6 +19,23 @@ const styles = theme => ({
   input: {
     display: 'none',
   },
+  root: {
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+    },
+    [theme.breakpoints.up('sm')]: {
+      flexDirection: 'row',
+    },
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  subGroup: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+  },
 });
 
 class DatePicker extends Component {
@@ -48,23 +65,8 @@ class DatePicker extends Component {
     const modifiers = { start: from, end: to };
     const { numberOfMonths, classes } = this.props;
     return (
-      <div
-        className="RangeExample"
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexDirection: 'row',
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column',
-          }}
-        >
+      <div className={classes.root}>
+        <div className={classes.subGroup}>
           <DateFieldsText label="CHECK - IN" value={moment(from).format('MMM DD YYYY')} />
           <DateFieldsText label="CHECK - OUT" value={moment(to).format('MMM DD YYYY')} />
           <Button

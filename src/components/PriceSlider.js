@@ -41,7 +41,7 @@ class PriceSlider extends Component {
     const { min, max } = this.state;
     return (
       <div>
-        <Typography align="center"> Price Range per night </Typography>
+        <Typography align="left"> Price Range per night </Typography>
         <Range
           className={classes.slider}
           onChange={minMax => this.handleChange(minMax)}
@@ -50,16 +50,22 @@ class PriceSlider extends Component {
           allowCross={false}
           trackStyle={[{ backgroundColor: '#F98100' }, { backgroundColor: '#F98100' }]}
           handleStyle={[
-            { backgroundColor: '#F98100', borderColor: '#F98100' },
-            { backgroundColor: '#F98100', borderColor: '#F98100' },
+            { backgroundColor: 'white', borderColor: '#F98100' },
+            { backgroundColor: 'white', borderColor: '#F98100' },
           ]}
           railStyle={{ backgroundColor: '#F98100' }}
           step={1}
           defaultValue={[hotels.minPrice, hotels.maxPrice]}
         />
-        <Grid container direction="row" justify="space-between">
-          <TextField label="Min" className={classes.textField} value={min} />
-          <TextField label="Max" className={classes.textField} value={max} />
+        <Grid container direction="row" justify="space-between" wrap="nowrap">
+          <Grid container direction="column" justify="flex-start">
+            <Typography>Min</Typography>
+            <Typography>$ {min}</Typography>
+          </Grid>
+          <Grid container direction="column" justify="flex-end">
+            <Typography align="right">Max</Typography>
+            <Typography align="right">$ {max}</Typography>
+          </Grid>
         </Grid>
       </div>
     );

@@ -1,8 +1,6 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
-import Card, { CardActions, CardContent } from 'material-ui/Card';
-import { Typography, Button, Grid, Paper } from 'material-ui';
-import Stars from './Stars';
+import { Typography, Grid } from 'material-ui';
 import PropTypes from 'prop-types';
 
 const styles = theme => ({
@@ -24,10 +22,10 @@ const HotelPriceItem = props => {
         alignContent="center"
         wrap="nowrap"
       >
-        <Typography> Total {days} nights </Typography>
-        <Typography> {days * price} </Typography>
-        <Typography> Per night </Typography>
-        <Typography> {price} </Typography>
+        <Typography noWrap> Total {days} nights </Typography>
+        <Typography noWrap> {days * price} </Typography>
+        <Typography noWrap> Per night </Typography>
+        <Typography noWrap> {price} </Typography>
       </Grid>
     </Grid>
   );

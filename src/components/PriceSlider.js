@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Slider from 'rc-slider';
 import Typography from 'material-ui/Typography';
+import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
+import { connect } from 'react-redux';
 import 'rc-slider/assets/index.css';
 const Range = Slider.Range;
 
@@ -36,7 +39,7 @@ class PriceSlider extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <Typography> Price Range per night </Typography>
+        <Typography align="center"> Price Range per night </Typography>
         <Range
           className={classes.slider}
           onChange={this.handleChange}
@@ -54,4 +57,12 @@ class PriceSlider extends Component {
   }
 }
 
-export default withStyles(styles)(PriceSlider);
+PriceSlider.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = ({ hotels }) => ({
+  hotels,
+});
+
+export default connect(mapStateToProps, null)(withStyles(styles)(PriceSlider));

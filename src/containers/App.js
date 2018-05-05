@@ -17,13 +17,13 @@ if (process.env.NODE_ENV !== 'production') {
 } else {
   middlewares = [reduxPromise];
 }
-
-const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
+export const store = createStore(reducers, applyMiddleware(...middlewares));
+// const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
 class App extends Component {
   render() {
     return (
-      <Provider store={createStoreWithMiddleware(reducers)}>
+      <Provider store={store}>
         <MuiThemeProvider theme={theme}>
           <BrowserRouter>
             <React.Fragment>

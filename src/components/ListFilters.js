@@ -10,7 +10,7 @@ const styles = theme => ({
   root: {},
   card: {
     width: 250,
-    height: 350,
+    height: 400,
     paddingTop: theme.spacing.unit,
     paddingBottom: theme.spacing.unit,
     paddingLeft: theme.spacing.unit,

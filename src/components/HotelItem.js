@@ -4,6 +4,8 @@ import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import { Typography, Button, Grid, Paper } from 'material-ui';
 import Stars from './Stars';
 import PropTypes from 'prop-types';
+import HotelPriceItem from './HotelPriceItem';
+import { store } from '../containers/App';
 
 const styles = theme => ({
   root: {},
@@ -46,7 +48,7 @@ const styles = theme => ({
 });
 
 const HotelItem = props => {
-  const { classes, hotel } = props;
+  const { classes, hotel, days } = props;
   return (
     <Paper elevation={4} className={classes.card}>
       <Grid container key={hotel.name} direction="row" wrap="nowrap">
@@ -54,13 +56,18 @@ const HotelItem = props => {
         <Grid container direction="row" wrap="nowrap">
           <Grid container direction="column">
             <CardContent>
-              <Stars rate={hotel.rate} />
-              <Typography style={{ color: '#F98100' }} variant="headline">
-                {hotel.name}
-              </Typography>
-              <Typography paragraph variant="subheading" color="textSecondary">
-                {hotel.description}
-              </Typography>
+              <Grid container direction="row" wrap="nowrap">
+                <Grid container direction="column">
+                  <Stars rate={hotel.rate} />
+                  <Typography style={{ color: '#F98100' }} variant="headline">
+                    {hotel.name}
+                  </Typography>
+                  <Typography paragraph variant="subheading" color="textSecondary">
+                    {hotel.description}
+                  </Typography>
+                </Grid>
+                <HotelPriceItem price={hotel.price} days={days} />
+              </Grid>
             </CardContent>
             <CardActions>
               <Button size="small" className={classes.buttonBook}>

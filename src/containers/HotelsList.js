@@ -39,7 +39,13 @@ const HotelsList = props => {
           <ListFilters />
         </Grid>
         <Grid item sm={4} md={8} className={classes.hotelList}>
-          {hotels.map(hotel => <HotelItem hotel={hotel} key={hotel.name} />)}
+          {hotels.map(hotel => (
+            <HotelItem
+              hotel={hotel}
+              key={hotel.name}
+              days={moment(dateRange.to).diff(dateRange.from, 'days')}
+            />
+          ))}
         </Grid>
       </Grid>
     </Grid>

@@ -6,6 +6,7 @@ import Grid from 'material-ui/Grid';
 import TextField from 'material-ui/TextField';
 import { withStyles } from 'material-ui/styles';
 import { connect } from 'react-redux';
+import { filterPriceRange } from '../actions';
 import 'rc-slider/assets/index.css';
 const Range = Slider.Range;
 
@@ -29,21 +30,10 @@ class PriceSlider extends Component {
       max: Math.round(props.hotels.maxPrice) || 800,
     };
   }
-  onMinChange = e => {
-    console.log('opa');
-    this.setState({
-      min: +e.target.value || 100,
-    });
-  };
-
-  onMaxChange = e => {
-    this.setState({
-      max: +e.target.value || this.state.max,
-    });
-  };
 
   handleChange(minMax) {
     this.setState({ min: minMax[0], max: minMax[1] });
+    this.props.filterPriceRange(minMax);
   }
 
   render() {
@@ -84,4 +74,4 @@ const mapStateToProps = ({ hotels }) => ({
   hotels,
 });
 
-export default connect(mapStateToProps, null)(withStyles(styles)(PriceSlider));
+export default connect(mapStateToProps, { filterPriceRange })(withStyles(styles)(PriceSlider));

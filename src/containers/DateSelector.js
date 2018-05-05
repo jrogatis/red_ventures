@@ -5,13 +5,17 @@ import PropTypes from 'prop-types';
 import DatePicker from '../components/DatePicker';
 
 const styles = theme => ({
-  root: theme.mixins.gutters({
-    paddingTop: 16,
-    paddingBottom: 16,
+  root: {
+    marginTop: '-20%',
+    marginBottom: '2%',
+  },
+  paper: {
     borderRadius: '5px',
-    zIndex: 9999,
-  }),
+    padding: '4% 10%',
+    boxShadow: '-1px -22px 47px 4px rgba(0,0,0,0.3)',
+  },
   text: {
+    paddingBottom: '4%',
     [theme.breakpoints.down('sm')]: {
       fontSize: '18px',
     },
@@ -22,23 +26,14 @@ class DateSelector extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexDirection: 'row',
-          marginTop: -200,
-        }}
-      >
-        <Paper className={classes.root} elevation={1}>
-          <Typography align="center" variant="display1" className={classes.text}>
+      <Grid container direction="row" alignItems="center" justify="center" className={classes.root}>
+        <Paper className={classes.paper}>
+          <Typography align="center" variant="headline" className={classes.text}>
             Select the dates to stay in Charlotte
           </Typography>
-
           <DatePicker />
         </Paper>
-      </div>
+      </Grid>
     );
   }
 }

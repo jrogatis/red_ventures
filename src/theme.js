@@ -22,6 +22,7 @@ const theme = createMuiTheme({
   },
   typography: {
     fontFamily: 'Heebo',
+    fontWeightRegular: '100',
   },
 });
 

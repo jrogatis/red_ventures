@@ -9,7 +9,7 @@ import AppBarButtons from '../components/AppBarButtons';
 import crown from '../images/crown-white-min.jpg';
 import Footer from '../components/Footer';
 import DateSelector from './DateSelector';
-import HotelList from '../containers/HotelsList';
+import HotelsList from '../containers/HotelsList';
 
 const styles = theme => ({
   root: {
@@ -40,7 +40,7 @@ class FrontPage extends Component {
         </AppBar>
         <CardMedia className={classes.media} image={crown} />
         <DateSelector />
-        <HotelList />
+        <HotelsList />
         <Footer />
       </Paper>
     );

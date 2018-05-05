@@ -4,7 +4,7 @@
     "plugin:prettier/recommended"
   ],
   "plugins": [
-    "prettier",
+    "prettier"
   ],
   "rules": {
     "prettier/prettier": "error",

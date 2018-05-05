@@ -8,8 +8,17 @@ import theme from '../theme';
 import './App.css';
 import FrontPage from '../containers/FrontPage';
 import reducers from '../reducers';
+import CssBaseline from 'material-ui/CssBaseline';
 
-const createStoreWithMiddleware = applyMiddleware(reduxPromise)(createStore);
+let middlewares;
+if (process.env.NODE_ENV !== 'production') {
+  const logger = require('redux-logger').default;
+  middlewares = [logger, reduxPromise];
+} else {
+  middlewares = [reduxPromise];
+}
+
+const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
 class App extends Component {
   render() {
@@ -17,11 +26,12 @@ class App extends Component {
       <Provider store={createStoreWithMiddleware(reducers)}>
         <MuiThemeProvider theme={theme}>
           <BrowserRouter>
-            <div>
+            <React.Fragment>
+              <CssBaseline />
               <Switch>
                 <Route path="/" component={FrontPage} />
               </Switch>
-            </div>
+            </React.Fragment>
           </BrowserRouter>
         </MuiThemeProvider>
       </Provider>

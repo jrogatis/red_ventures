@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
-import { Star, StarOutline } from 'mdi-material-ui';
+import { Star } from 'mdi-material-ui';
 
 const styles = theme => ({
   stars: { color: '#F98100' },

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import DateFieldsText from './DateFieldsText';
 import moment from 'moment';
-import Button from 'material-ui/Button';
+import { Button, Grid } from 'material-ui';
 import { connect } from 'react-redux';
 import { fetchHotels, fetchDateRange } from '../actions';
 
@@ -18,17 +18,6 @@ const styles = theme => ({
   },
   input: {
     display: 'none',
-  },
-  root: {
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column',
-    },
-    [theme.breakpoints.up('sm')]: {
-      flexDirection: 'row',
-    },
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   subGroup: {
     display: 'flex',
@@ -52,6 +41,7 @@ class DatePicker extends Component {
 
   handleDayClick(day) {
     const range = DateUtils.addDayToRange(day, this.state);
+    this.props.fetchDateRange(range);
     this.setState(range);
   }
 
@@ -60,10 +50,10 @@ class DatePicker extends Component {
     const modifiers = { start: from, end: to };
     const { numberOfMonths, classes } = this.props;
     return (
-      <div className={classes.root}>
-        <div className={classes.subGroup}>
-          <DateFieldsText label="CHECK - IN" value={moment(from).format('MMM DD YYYY')} />
-          <DateFieldsText label="CHECK - OUT" value={moment(to).format('MMM DD YYYY')} />
+      <Grid container direction="row" justify="center" spacing={16} wrap="nowrap">
+        <Grid container justify="center" direction="column">
+          <DateFieldsText label="CHECK-IN" value={moment(from).format('MMM DD YYYY')} />
+          <DateFieldsText label="CHECK-OUT" value={moment(to).format('MMM DD YYYY')} />
           <Button
             color="primary"
             variant="raised"
@@ -73,7 +63,7 @@ class DatePicker extends Component {
           >
             Search hotels
           </Button>
-        </div>
+        </Grid>
         <DayPicker
           className="Selectable"
           numberOfMonths={numberOfMonths}
@@ -83,6 +73,9 @@ class DatePicker extends Component {
         />
         <Helmet>
           <style>{`
+                  .dayPicker {
+                    font-family: Heebo !important;
+                  }
                   .Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
                     background-color: #79BD1A !important;
                     color: #f0f8ff;
@@ -102,7 +95,7 @@ class DatePicker extends Component {
                   }
                 `}</style>
         </Helmet>
-      </div>
+      </Grid>
     );
   }
 }

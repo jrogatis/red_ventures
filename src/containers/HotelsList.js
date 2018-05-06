@@ -12,7 +12,7 @@ const styles = theme => ({
     margin: '20px 20px 20px 0px',
   },
   hotelList: {
-    margin: '20 20 0 -120px',
+    margin: '20 20 0 0px',
   },
 });
 
@@ -22,6 +22,7 @@ const HotelsList = props => {
     hotels: { hotels },
     dateRanges: { dateRange },
   } = props;
+
   return hotels && dateRange ? (
     <Grid>
       <Typography align="center" variant="display1">
@@ -31,14 +32,15 @@ const HotelsList = props => {
       <Grid
         container
         className={classes.root}
-        alignItems="flex-start"
         direction="row"
         wrap="nowrap"
+        alignItems="flex-start"
+        alignContent="center"
       >
-        <Grid item sm={4} md={3}>
+        <Grid item xs={3}>
           <ListFilters />
         </Grid>
-        <Grid item sm={4} md={8} className={classes.hotelList}>
+        <Grid item xs={8} className={classes.hotelList}>
           {hotels.map(hotel => (
             <HotelItem
               hotel={hotel}

@@ -1,39 +1,33 @@
 import React from 'react';
-import Card from 'material-ui/Card';
-import { Typography, Grid } from 'material-ui';
+import { Paper, Typography, Grid } from 'material-ui';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import PriceSlider from './PriceSlider';
 import StarsSelector from './StarsSelector';
 
 const styles = theme => ({
-  root: {},
-  card: {
+  root: {
     width: 250,
     height: 430,
-    paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-    paddingLeft: theme.spacing.unit,
-    marginBottom: theme.spacing.unit,
-    marginLeft: theme.spacing.unit,
+    padding: theme.spacing.unit + 10,
   },
   title: {
-    marginBottom: theme.spacing.unit + 30,
+    marginBottom: theme.spacing.unit + 20,
   },
 });
 
 const ListFilters = props => {
   const { classes } = props;
   return (
-    <Card className={classes.card}>
-      <Grid container className={classes.root} justify="center" direction="column">
+    <Paper elevation={4} className={classes.root}>
+      <Grid container direction="column" alignContent="flex-start">
         <Typography className={classes.title} align="left" variant="headline">
           Filters
         </Typography>
         <PriceSlider />
         <StarsSelector />
       </Grid>
-    </Card>
+    </Paper>
   );
 };
 

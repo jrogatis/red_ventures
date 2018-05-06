@@ -52,8 +52,16 @@ class DatePicker extends Component {
     return (
       <Grid container direction="row" justify="center" spacing={16} wrap="nowrap">
         <Grid container justify="center" direction="column">
-          <DateFieldsText label="CHECK-IN" value={moment(from).format('MMM DD YYYY')} />
-          <DateFieldsText label="CHECK-OUT" value={moment(to).format('MMM DD YYYY')} />
+          <DateFieldsText
+            id="CHECK-IN"
+            label="CHECK-IN"
+            value={moment(from).format('MMM DD YYYY')}
+          />
+          <DateFieldsText
+            id="CHECK-OUT"
+            label="CHECK-OUT"
+            value={moment(to).format('MMM DD YYYY')}
+          />
           <Button
             color="primary"
             variant="raised"

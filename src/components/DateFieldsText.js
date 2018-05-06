@@ -17,12 +17,13 @@ const styles = theme => ({
 });
 
 const DateFields = props => {
-  const { classes, label, value, placeholder } = props;
+  const { classes, label, value, placeholder, id } = props;
 
   return (
     <form className={classes.container} noValidate>
       <TextField
-        id="date"
+        id={id}
+        name={id}
         label={label}
         type="text"
         value={value}

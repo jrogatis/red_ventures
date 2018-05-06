@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Slider from 'rc-slider';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
-import TextField from 'material-ui/TextField';
 import { withStyles } from 'material-ui/styles';
 import { connect } from 'react-redux';
 import { filterPriceRange } from '../actions';
@@ -22,55 +21,46 @@ const styles = theme => ({
   },
 });
 
-class PriceSlider extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      min: Math.round(props.hotels.minPrice) || 100,
-      max: Math.round(props.hotels.maxPrice) || 800,
-    };
-  }
+const PriceSlider = props => {
+  const {
+    classes,
+    hotels: { minPrice, maxPrice, minFilter, maxFilter },
+    filterPriceRange,
+  } = props;
 
-  handleChange(minMax) {
-    this.setState({ min: minMax[0], max: minMax[1] });
-    this.props.filterPriceRange(minMax);
-  }
+  const handleChange = minMax => filterPriceRange(minMax);
 
-  render() {
-    const { classes, hotels } = this.props;
-    const { min, max } = this.state;
-    return (
-      <div>
-        <Typography align="left"> Price Range per night </Typography>
-        <Range
-          className={classes.slider}
-          onChange={minMax => this.handleChange(minMax)}
-          min={hotels.minPrice}
-          max={hotels.maxPrice}
-          allowCross={false}
-          trackStyle={[{ backgroundColor: '#F98100' }, { backgroundColor: '#F98100' }]}
-          handleStyle={[
-            { backgroundColor: 'white', borderColor: '#F98100' },
-            { backgroundColor: 'white', borderColor: '#F98100' },
-          ]}
-          railStyle={{ backgroundColor: '#F98100' }}
-          step={1}
-          defaultValue={[hotels.minPrice, hotels.maxPrice]}
-        />
-        <Grid container direction="row" justify="space-between" wrap="nowrap">
-          <Grid container direction="column" justify="flex-start">
-            <Typography>Min</Typography>
-            <Typography>$ {min}</Typography>
-          </Grid>
-          <Grid container direction="column" justify="flex-end">
-            <Typography align="right">Max</Typography>
-            <Typography align="right">$ {max}</Typography>
-          </Grid>
+  return (
+    <div>
+      <Typography align="left"> Price Range per night </Typography>
+      <Range
+        className={classes.slider}
+        onChange={minMax => handleChange(minMax)}
+        min={minPrice - 40}
+        max={maxPrice + 40}
+        allowCross={false}
+        trackStyle={[{ backgroundColor: '#F98100' }, { backgroundColor: '#F98100' }]}
+        handleStyle={[
+          { backgroundColor: 'white', borderColor: '#F98100' },
+          { backgroundColor: 'white', borderColor: '#F98100' },
+        ]}
+        railStyle={{ backgroundColor: '#F98100' }}
+        step={0.01}
+        defaultValue={[minPrice, maxPrice]}
+      />
+      <Grid container direction="row" justify="space-between" wrap="nowrap">
+        <Grid container direction="column" justify="flex-start">
+          <Typography>Min</Typography>
+          <Typography>$ {minFilter}</Typography>
         </Grid>
-      </div>
-    );
-  }
-}
+        <Grid container direction="column" justify="flex-end">
+          <Typography align="right">Max</Typography>
+          <Typography align="right">$ {maxFilter}</Typography>
+        </Grid>
+      </Grid>
+    </div>
+  );
+};
 
 PriceSlider.propTypes = {
   classes: PropTypes.object.isRequired,

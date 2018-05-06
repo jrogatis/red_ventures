@@ -43,7 +43,6 @@ class StarRow extends Component {
 
   render() {
     const { classes } = this.props;
-    const { checked } = this.state;
     return (
       <FormControlLabel
         control={

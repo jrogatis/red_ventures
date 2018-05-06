@@ -10,17 +10,11 @@ const filterMinMax = (minMax, hotel) => hotel.price >= minMax[0] && hotel.price 
 
 const filterStars = (stars, hotel) => stars.includes(hotel.rate);
 
-const filterHotels = (minMax, stars, hotels) => {
-  return hotels.filter(hotel => {
-    if (filterMinMax(minMax, hotel)) {
-      if (stars.length) {
-        return filterStars(stars, hotel);
-      } else {
-        return true;
-      }
-    }
-  });
-};
+const filteredHotels = (minMax, stars, hotels) =>
+  hotels.filter(
+    hotel =>
+      filterMinMax(minMax, hotel) ? (stars.length ? filterStars(stars, hotel) : true) : false,
+  );
 
 export default (state = [], action) => {
   const { type, payload } = action;
@@ -47,7 +41,7 @@ export default (state = [], action) => {
       };
     case FILTER_PRICE_RANGE:
       const minMax = payload;
-      const hotelsFiltered = filterHotels(minMax, state.stars, state.hotelsNoFilter);
+      const hotelsFiltered = filteredHotels(minMax, state.stars, state.hotelsNoFilter);
       return {
         ...state,
         hotels: hotelsFiltered,
@@ -58,7 +52,7 @@ export default (state = [], action) => {
       const star = payload;
       const nStars = [...state.stars, star];
       const minMaxStarsAdd = [state.minFilter, state.maxFilter];
-      const hotelsFilteredStars = filterHotels(minMaxStarsAdd, nStars, state.hotelsNoFilter);
+      const hotelsFilteredStars = filteredHotels(minMaxStarsAdd, nStars, state.hotelsNoFilter);
       return {
         ...state,
         hotels: hotelsFilteredStars,
@@ -68,7 +62,7 @@ export default (state = [], action) => {
       const starRemove = payload;
       const nStarsRemoved = state.stars.filter(star => star !== starRemove);
       const minMaxStarsRemove = [state.minFilter, state.maxFilter];
-      const hotelsFilteredStarsRemoved = filterHotels(
+      const hotelsFilteredStarsRemoved = filteredHotels(
         minMaxStarsRemove,
         nStarsRemoved,
         state.hotelsNoFilter,

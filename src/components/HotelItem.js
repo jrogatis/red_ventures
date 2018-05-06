@@ -1,11 +1,10 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
+import { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import { Typography, Button, Grid, Paper } from 'material-ui';
 import Stars from './Stars';
 import PropTypes from 'prop-types';
 import HotelPriceItem from './HotelPriceItem';
-import { store } from '../containers/App';
 
 const styles = theme => ({
   root: {},

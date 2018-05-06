@@ -4,11 +4,12 @@ import { createStore, applyMiddleware } from 'redux';
 import reduxPromise from 'redux-promise';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { MuiThemeProvider } from 'material-ui/styles';
+import asyncComponent from '../components/AsyncComponent';
 import theme from '../theme';
-import './App.css';
-import FrontPage from '../containers/FrontPage';
 import reducers from '../reducers';
 import CssBaseline from 'material-ui/CssBaseline';
+
+const AsyncHome = asyncComponent(() => import('../containers/FrontPage'));
 
 let middlewares;
 if (process.env.NODE_ENV !== 'production') {
@@ -29,7 +30,7 @@ class App extends Component {
             <React.Fragment>
               <CssBaseline />
               <Switch>
-                <Route path="/" component={FrontPage} />
+                <Route path="/" component={AsyncHome} />
               </Switch>
             </React.Fragment>
           </BrowserRouter>

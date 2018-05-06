@@ -1,7 +1,13 @@
 {
   "name": "red_ventures",
   "version": "0.1.0",
+  "description": "Red Ventures Charlotte Hotels",
+  "author": "Jean Philip de Rogatis",
+  "license": "MIT",
   "private": true,
+  "engines": {
+    "node": "8.11.1"
+  },
   "dependencies": {
     "@material-ui/icons": "^1.0.0-beta.43",
     "autoprefixer": "7.1.6",

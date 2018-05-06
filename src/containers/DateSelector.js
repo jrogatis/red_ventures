@@ -8,14 +8,12 @@ const styles = theme => ({
   root: {
     marginTop: '-20%',
     marginBottom: '2%',
-  },
-  paper: {
     borderRadius: '5px',
-    padding: '4% 10%',
+    padding: '4% 8%',
     boxShadow: '-1px -22px 47px 4px rgba(0,0,0,0.3)',
   },
   text: {
-    paddingBottom: '4%',
+    padding: '0 12% 10% 12%',
     [theme.breakpoints.down('sm')]: {
       fontSize: '18px',
     },
@@ -26,12 +24,20 @@ class DateSelector extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <Grid container direction="row" alignItems="center" justify="center" className={classes.root}>
-        <Paper className={classes.paper}>
-          <Typography align="center" variant="headline" className={classes.text}>
-            Select the dates to stay in Charlotte
-          </Typography>
-          <DatePicker />
+      <Grid container direction="row" alignItems="center" justify="center">
+        <Paper className={classes.root}>
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            justify="space-around"
+            wrap="nowrap"
+          >
+            <Typography align="center" variant="headline" className={classes.text} noWrap>
+              Select the dates to stay in Charlotte
+            </Typography>
+            <DatePicker />
+          </Grid>
         </Paper>
       </Grid>
     );

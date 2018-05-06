@@ -11,16 +11,14 @@ const HotelCardContent = props => {
   const { hotel } = props;
   return (
     <CardContent>
-      <Grid container direction="row" wrap="nowrap">
-        <Grid container direction="column">
-          <Stars rate={hotel.rate} />
-          <Typography style={{ color: '#F98100' }} variant="headline">
-            {hotel.name}
-          </Typography>
-          <Typography paragraph variant="subheading" color="textSecondary">
-            {hotel.description}
-          </Typography>
-        </Grid>
+      <Grid container direction="column" wrap="nowrap">
+        <Stars rate={hotel.rate} />
+        <Typography style={{ color: '#F98100' }} variant="headline">
+          {hotel.name}
+        </Typography>
+        <Typography paragraph variant="subheading" color="textSecondary">
+          {hotel.description}
+        </Typography>
       </Grid>
     </CardContent>
   );

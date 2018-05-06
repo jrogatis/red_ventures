@@ -16,10 +16,10 @@ const styles = theme => ({
     borderRadius: '25px',
     textTransform: 'none',
     backgroundColor: 'transparent',
-    color: theme.palette.primary,
+    color: theme.palette.primary.light,
     borderWidth: 1,
     borderStyle: 'solid',
-    borderColor: theme.palette.primary,
+    borderColor: theme.palette.primary.light,
   },
 });
 

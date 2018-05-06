@@ -50,32 +50,31 @@ class DatePicker extends Component {
     this.setState(range);
   }
 
-  render() {
+  renderLeft() {
+    const { from, to } = this.state;
+    const { classes } = this.props;
+    return (
+      <Grid container justify="center" direction="column">
+        <DateFieldsText id="CHECK-IN" label="CHECK-IN" value={moment(from).format('MMM DD YYYY')} />
+        <DateFieldsText id="CHECK-OUT" label="CHECK-OUT" value={moment(to).format('MMM DD YYYY')} />
+        <Button
+          variant="flat"
+          className={classes.button}
+          disabled={!(from && to)}
+          onClick={() => this.props.fetchHotels()}
+        >
+          Search hotels
+        </Button>
+      </Grid>
+    );
+  }
+
+  renderDayPicker() {
     const { from, to } = this.state;
     const modifiers = { start: from, end: to };
-    const { numberOfMonths, classes } = this.props;
+    const { numberOfMonths } = this.props;
     return (
-      <Grid container direction="row" justify="center" spacing={16} wrap="nowrap">
-        <Grid container justify="center" direction="column">
-          <DateFieldsText
-            id="CHECK-IN"
-            label="CHECK-IN"
-            value={moment(from).format('MMM DD YYYY')}
-          />
-          <DateFieldsText
-            id="CHECK-OUT"
-            label="CHECK-OUT"
-            value={moment(to).format('MMM DD YYYY')}
-          />
-          <Button
-            variant="flat"
-            className={classes.button}
-            disabled={!(from && to)}
-            onClick={() => this.props.fetchHotels()}
-          >
-            Search hotels
-          </Button>
-        </Grid>
+      <div>
         <DayPicker
           className="Selectable"
           numberOfMonths={numberOfMonths}
@@ -85,28 +84,37 @@ class DatePicker extends Component {
         />
         <Helmet>
           <style>{`
-                  .dayPicker {
-                    font-family: Heebo !important;
-                  }
-                  .Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
-                    background-color: #79BD1A !important;
-                    color: #f0f8ff;
-                  }
-                  .Selectable .DayPicker-Day {
-                    border-radius: 0 !important;
-                  }
-                  .Selectable .DayPicker-Day--start {
-                    border-top-left-radius: 50% !important;
-                    border-bottom-left-radius: 50% !important;
-                      background-color: #79BD1A !important;
-                  }
-                  .Selectable .DayPicker-Day--end {
-                    border-top-right-radius: 50% !important;
-                    border-bottom-right-radius: 50% !important;
-                      background-color: #79BD1A !important;
-                  }
-                `}</style>
+              .dayPicker {
+                font-family: Heebo !important;
+              }
+              .Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+                background-color: #79BD1A !important;
+                color: #f0f8ff;
+              }
+              .Selectable .DayPicker-Day {
+                border-radius: 0 !important;
+              }
+              .Selectable .DayPicker-Day--start {
+                border-top-left-radius: 50% !important;
+                border-bottom-left-radius: 50% !important;
+                  background-color: #79BD1A !important;
+              }
+              .Selectable .DayPicker-Day--end {
+                border-top-right-radius: 50% !important;
+                border-bottom-right-radius: 50% !important;
+                  background-color: #79BD1A !important;
+              }
+            `}</style>
         </Helmet>
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <Grid container direction="row" justify="center" spacing={16} wrap="nowrap">
+        {this.renderLeft()}
+        {this.renderDayPicker()}
       </Grid>
     );
   }

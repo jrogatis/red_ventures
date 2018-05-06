@@ -12,13 +12,13 @@ const HotelCard = props => {
   const { hotel, days } = props;
   return (
     <Grid container direction="row" wrap="nowrap" alignItems="center">
-      <Grid item xs={10}>
+      <Grid item xs={8} lg={10}>
         <Grid container direction="column">
           <HotelCardContent hotel={hotel} />
           <HotelCardActions />
         </Grid>
       </Grid>
-      <Grid item xs={2}>
+      <Grid item xs={4} lg={2}>
         <HotelPriceItem price={hotel.price} days={days} />
       </Grid>
     </Grid>

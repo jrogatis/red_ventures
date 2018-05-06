@@ -3,7 +3,7 @@ import { withStyles } from 'material-ui/styles';
 import { Star } from 'mdi-material-ui';
 
 const styles = theme => ({
-  stars: { color: '#F98100' },
+  stars: { color: theme.palette.primary.light },
 });
 
 const Stars = props => {

@@ -15,6 +15,11 @@ const styles = theme => ({
     margin: theme.spacing.unit,
     borderRadius: '25px',
     textTransform: 'none',
+    backgroundColor: 'transparent',
+    color: theme.palette.primary.light,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: theme.palette.primary.light,
   },
   input: {
     display: 'none',
@@ -63,8 +68,7 @@ class DatePicker extends Component {
             value={moment(to).format('MMM DD YYYY')}
           />
           <Button
-            color="primary"
-            variant="raised"
+            variant="flat"
             className={classes.button}
             disabled={!(from && to)}
             onClick={() => this.props.fetchHotels()}

@@ -39,12 +39,61 @@ const styles = theme => ({
     borderRadius: '25px',
     textTransform: 'none',
     backgroundColor: 'transparent',
-    color: '#F98100',
+    color: theme.palette.primary,
     borderWidth: 1,
     borderStyle: 'solid',
-    borderColor: '#F98100',
+    borderColor: theme.palette.primary,
   },
 });
+
+const HotelCardActions = props => {
+  const { classes } = props;
+  return (
+    <CardActions>
+      <Button size="small" className={classes.buttonBook}>
+        Book Now
+      </Button>
+      <Button size="small" className={classes.buttonPrice}>
+        Price history
+      </Button>
+    </CardActions>
+  );
+};
+
+const HotelCardContent = props => {
+  const { hotel } = props;
+  return (
+    <CardContent>
+      <Grid container direction="row" wrap="nowrap">
+        <Grid container direction="column">
+          <Stars rate={hotel.rate} />
+          <Typography style={{ color: '#F98100' }} variant="headline">
+            {hotel.name}
+          </Typography>
+          <Typography paragraph variant="subheading" color="textSecondary">
+            {hotel.description}
+          </Typography>
+        </Grid>
+      </Grid>
+    </CardContent>
+  );
+};
+const HotelCard = props => {
+  const { classes, hotel, days } = props;
+  return (
+    <Grid container direction="row" wrap="nowrap" alignItems="center">
+      <Grid item xs={10}>
+        <Grid container direction="column">
+          <HotelCardContent classes={classes} hotel={hotel} />
+          <HotelCardActions classes={classes} />
+        </Grid>
+      </Grid>
+      <Grid item xs={2}>
+        <HotelPriceItem price={hotel.price} days={days} />
+      </Grid>
+    </Grid>
+  );
+};
 
 const HotelItem = props => {
   const { classes, hotel, days } = props;
@@ -52,32 +101,7 @@ const HotelItem = props => {
     <Paper elevation={4} className={classes.card}>
       <Grid container key={hotel.name} direction="row" wrap="nowrap">
         <CardMedia className={classes.image} image={hotel.image} title={hotel.name} />
-        <Grid container direction="row" wrap="nowrap">
-          <Grid container direction="column">
-            <CardContent>
-              <Grid container direction="row" wrap="nowrap">
-                <Grid container direction="column">
-                  <Stars rate={hotel.rate} />
-                  <Typography style={{ color: '#F98100' }} variant="headline">
-                    {hotel.name}
-                  </Typography>
-                  <Typography paragraph variant="subheading" color="textSecondary">
-                    {hotel.description}
-                  </Typography>
-                </Grid>
-                <HotelPriceItem price={hotel.price} days={days} />
-              </Grid>
-            </CardContent>
-            <CardActions>
-              <Button size="small" className={classes.buttonBook}>
-                Book Now
-              </Button>
-              <Button size="small" className={classes.buttonPrice}>
-                Price history
-              </Button>
-            </CardActions>
-          </Grid>
-        </Grid>
+        <HotelCard hotel={hotel} classes={classes} days={days} />
       </Grid>
     </Paper>
   );

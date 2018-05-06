@@ -7,11 +7,11 @@ import { connect } from 'react-redux';
 import { filterStarsRangeAdd, filterStarsRangeRemove } from '../actions';
 
 const styles = theme => ({
-  stars: { backgroundColor: '#FFBA23' },
+  stars: { backgroundColor: theme.palette.primary.light },
   root: {
-    color: '#FFBA23',
+    color: theme.palette.primary.light,
     '&$checked': {
-      color: '#FFBA23',
+      color: theme.palette.primary.light,
     },
   },
   checked: {},

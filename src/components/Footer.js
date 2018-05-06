@@ -24,7 +24,7 @@ const styles = theme => ({
     textTransform: 'none',
     marginLeft: 10,
     marginBotton: 30,
-    backgroundColor: '#F98100',
+    backgroundColor: theme.palette.primary.light,
   },
   text: {
     [theme.breakpoints.down('sm')]: {

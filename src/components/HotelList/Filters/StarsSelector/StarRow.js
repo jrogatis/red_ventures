@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import StarsFull from './StarsFull';
 import { withStyles } from 'material-ui/styles';
 import { FormControlLabel } from 'material-ui/Form';
 import Checkbox from 'material-ui/Checkbox';
 import { connect } from 'react-redux';
-import { filterStarsRangeAdd, filterStarsRangeRemove } from '../actions';
+
+import StarsFull from './StarsFull';
+import { filterStarsRangeAdd, filterStarsRangeRemove } from '../../../../actions';
 
 const styles = theme => ({
   stars: { backgroundColor: theme.palette.primary.light },

@@ -5,8 +5,10 @@ import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
 import { connect } from 'react-redux';
-import { filterPriceRange } from '../actions';
-import { valueFormated } from '../utils';
+
+import { filterPriceRange } from '../../../actions';
+import { valueFormated } from '../../../utils';
+
 import 'rc-slider/assets/index.css';
 const Range = Slider.Range;
 

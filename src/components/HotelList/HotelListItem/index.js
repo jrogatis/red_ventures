@@ -50,7 +50,7 @@ const HotelItem = props => {
         <Grid item xs sm={4} md={3} lg={2}>
           <CardMedia className={classes.image} image={hotel.image} title={hotel.name} />
         </Grid>
-        <Grid item xs={12} sm md lg>
+        <Grid item xs sm md lg>
           <HotelCard hotel={hotel} days={days} />
         </Grid>
       </Grid>

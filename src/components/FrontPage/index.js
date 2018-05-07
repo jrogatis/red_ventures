@@ -5,11 +5,12 @@ import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import { CardMedia } from 'material-ui/Card';
-import AppBarButtons from '../components/AppBarButtons';
-import crown from '../images/crown-white-min.jpg';
-import Footer from '../components/Footer';
-import DateSelector from './DateSelector';
-import HotelsList from '../containers/HotelsList';
+
+import AppBarButtons from './AppBarButtons';
+import crown from '../../images/crown-white-min.jpg';
+import Footer from '../Footer';
+import DateSelector from '../DateSelector';
+import HotelsList from '../HotelList';
 
 const styles = theme => ({
   root: {

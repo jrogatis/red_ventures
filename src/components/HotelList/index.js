@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import { connect } from 'react-redux';
-import HotelItem from '../components/HotelItem';
-import ListFilters from '../components/ListFilters';
 import { Grid, Typography } from 'material-ui';
 import moment from 'moment';
+
+import HotelItem from './HotelListItem';
+import ListFilters from './Filters';
 
 const styles = theme => ({
   root: {

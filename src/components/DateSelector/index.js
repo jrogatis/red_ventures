@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Typography, Paper, Grid } from 'material-ui';
 import { withStyles } from 'material-ui/styles';
 import PropTypes from 'prop-types';
-import DatePicker from '../components/DatePicker';
+import DatePicker from './DatePicker';
 
 const styles = theme => ({
   root: {

@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import DayPicker, { DateUtils } from 'react-day-picker';
-import 'react-day-picker/lib/style.css';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import DateFieldsText from './DateFieldsText';
 import moment from 'moment';
 import { Button, Grid } from 'material-ui';
 import { connect } from 'react-redux';
-import { fetchHotels, fetchDateRange } from '../actions';
+
+import DateFieldsText from './DateFieldsText';
+import { fetchHotels, fetchDateRange } from '../../actions';
+
+import 'react-day-picker/lib/style.css';
 
 const styles = theme => ({
   button: {

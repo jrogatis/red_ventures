@@ -2,7 +2,8 @@ import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import { Typography, Grid } from 'material-ui';
 import PropTypes from 'prop-types';
-import { valueFormated } from '../utils';
+
+import { valueFormated } from '../../../../utils';
 
 const styles = theme => ({
   root: {

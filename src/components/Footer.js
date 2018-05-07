@@ -27,7 +27,7 @@ const styles = theme => ({
     backgroundColor: theme.palette.primary.light,
   },
   text: {
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('xs')]: {
       fontSize: '12px',
     },
   },

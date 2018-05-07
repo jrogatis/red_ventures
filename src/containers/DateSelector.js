@@ -14,7 +14,7 @@ const styles = theme => ({
   },
   text: {
     padding: '0 12% 10% 12%',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('xs')]: {
       fontSize: '18px',
     },
   },

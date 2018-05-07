@@ -11,9 +11,24 @@ const styles = theme => ({
     paddingBottom: theme.spacing.unit,
     marginBottom: theme.spacing.unit,
     marginLeft: theme.spacing.unit + 40,
+    [theme.breakpoints.down('xs')]: {
+      marginLeft: theme.spacing.unit,
+      marginTop: theme.spacing.unit + 60,
+    },
   },
-  content: {},
+  content: {
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+  },
   image: {
+    [theme.breakpoints.down('xs')]: {
+      float: 'top',
+      marginLeft: 0,
+      marginTop: -50,
+      transform: 'translateX(-50%)',
+    },
     height: 200,
     width: 200,
     minWidth: 200,
@@ -31,9 +46,13 @@ const HotelItem = props => {
   const { classes, hotel, days } = props;
   return (
     <Paper elevation={4} className={classes.root}>
-      <Grid container key={hotel.name} direction="row" wrap="nowrap">
-        <CardMedia className={classes.image} image={hotel.image} title={hotel.name} />
-        <HotelCard hotel={hotel} days={days} />
+      <Grid container className={classes.content} key={hotel.name} direction="row" wrap="nowrap">
+        <Grid item xs sm={4} md={3} lg={2}>
+          <CardMedia className={classes.image} image={hotel.image} title={hotel.name} />
+        </Grid>
+        <Grid item xs={12} sm md lg>
+          <HotelCard hotel={hotel} days={days} />
+        </Grid>
       </Grid>
     </Paper>
   );

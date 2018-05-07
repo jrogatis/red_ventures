@@ -7,7 +7,15 @@ import { valueFormated } from '../utils';
 const styles = theme => ({
   root: {
     borderLeft: '1px solid #adadad',
-    paddingRight: '3%',
+    paddingLeft: '5%',
+    marginLeft: '3%',
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'row',
+      alignItems: 'flex-end',
+      justifyContent: 'space-around',
+      borderLeft: '0px',
+      borderTop: '1px solid #adadad',
+    },
   },
   valueTotal: {
     color: '#79BD1A',
@@ -17,22 +25,48 @@ const styles = theme => ({
   },
 });
 
-const HotelPriceItem = props => {
+const total = props => {
   const { price, days, classes } = props;
   return (
-    <Grid container direction="column" wrap="nowrap" className={classes.root} alignItems="flex-end">
+    <Grid container direction="column">
       <Typography noWrap gutterBottom variant="subheading" color="textSecondary">
         Total {days} nights
       </Typography>
       <Typography noWrap className={classes.valueTotal} variant="title" paragraph>
         $ {valueFormated(days * price)}
       </Typography>
+    </Grid>
+  );
+};
+
+const perNight = props => {
+  const { price, classes } = props;
+  return (
+    <Grid container direction="column">
       <Typography noWrap gutterBottom variant="subheading" color="textSecondary">
         Per night
       </Typography>
       <Typography noWrap paragraph className={classes.value}>
         $ {valueFormated(price)}
       </Typography>
+    </Grid>
+  );
+};
+
+const HotelPriceItem = props => {
+  const { classes } = props;
+  return (
+    <Grid
+      container
+      direction="column"
+      wrap="nowrap"
+      className={classes.root}
+      alignItems="flex-start"
+      spacing={16}
+      zeroMinWidth
+    >
+      <Grid item>{total(props)}</Grid>
+      <Grid item>{perNight(props)}</Grid>
     </Grid>
   );
 };

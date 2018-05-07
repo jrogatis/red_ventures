@@ -10,6 +10,9 @@ import moment from 'moment';
 const styles = theme => ({
   root: {
     margin: '20px 20px 20px 0px',
+    [theme.breakpoints.down('sm')]: {
+      margin: '20px',
+    },
   },
   hotelList: {
     margin: '20 20 0 0px',
@@ -24,7 +27,7 @@ const HotelsList = props => {
   } = props;
 
   return hotels && dateRange ? (
-    <Grid>
+    <Grid container direction="column" wrap="nowrap" alignItems="center">
       <Typography align="center" variant="display1">
         Best choices between {moment(dateRange.from).format('MMM DD')} and {''}
         {moment(dateRange.to).format('MMM DD')}
@@ -37,17 +40,21 @@ const HotelsList = props => {
         alignItems="flex-start"
         alignContent="center"
       >
-        <Grid item xs={3}>
+        <Grid item xs md={3} lg={2} hidden={{ smDown: true }}>
           <ListFilters />
         </Grid>
-        <Grid item xs={8} className={classes.hotelList}>
-          {hotels.map(hotel => (
-            <HotelItem
-              hotel={hotel}
-              key={hotel.name}
-              days={moment(dateRange.to).diff(dateRange.from, 'days')}
-            />
-          ))}
+        <Grid item xs={12} sm={11} md={9} lg={10}>
+          <Grid container className={classes.hotelList}>
+            {hotels.map(hotel => (
+              <Grid item xs={12}>
+                <HotelItem
+                  hotel={hotel}
+                  key={hotel.name}
+                  days={moment(dateRange.to).diff(dateRange.from, 'days')}
+                />
+              </Grid>
+            ))}
+          </Grid>
         </Grid>
       </Grid>
     </Grid>

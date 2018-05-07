@@ -1,24 +1,29 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
-import HotelCardActions from './HotelCardActions';
 import { Grid } from 'material-ui';
 import PropTypes from 'prop-types';
 import HotelPriceItem from './HotelPriceItem';
 import HotelCardContent from './HotelCardContent';
 
-const styles = theme => ({});
+const styles = theme => ({
+  root: {
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column',
+      alignItems: 'center',
+      justify: 'space-around',
+    },
+    padding: '2%',
+  },
+});
 
 const HotelCard = props => {
-  const { hotel, days } = props;
+  const { hotel, days, classes } = props;
   return (
-    <Grid container direction="row" wrap="nowrap" alignItems="center">
-      <Grid item xs={8} lg={10}>
-        <Grid container direction="column">
-          <HotelCardContent hotel={hotel} />
-          <HotelCardActions />
-        </Grid>
+    <Grid container direction="row" wrap="nowrap" alignItems="center" className={classes.root}>
+      <Grid item xs sm={9} md={9} lg={10}>
+        <HotelCardContent hotel={hotel} />
       </Grid>
-      <Grid item xs={4} lg={2}>
+      <Grid item xs md lg>
         <HotelPriceItem price={hotel.price} days={days} />
       </Grid>
     </Grid>

@@ -51,7 +51,7 @@ class HotelsList extends Component {
 
     return hotels && dateRange ? (
       <div>
-        <FilterDialog handleModal={() => this.handleDialog()} open={this.state.dialogOpen} />
+        <FilterDialog handleDialog={() => this.handleDialog()} open={this.state.dialogOpen} />
         <Hidden mdUp>
           <Button
             variant="fab"

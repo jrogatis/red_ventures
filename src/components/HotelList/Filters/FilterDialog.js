@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import { Button } from 'material-ui';
-import Filter from './index';
+import Dialog from 'material-ui/Dialog';
 
-import Dialog, { DialogTitle } from 'material-ui/Dialog';
+import Filter from './index';
 
 const styles = () => {};
 
@@ -13,11 +13,10 @@ const FilterDialog = props => {
 
   return (
     <Dialog aria-labelledby="simple-dialog-title" {...other}>
-      <DialogTitle id="simple-dialog-title">Filters</DialogTitle>
-      <div>
-        <Filter />
-        <Button onClick={ev => handleDialog()} />
-      </div>
+      <Filter />
+      <Button color="primary" onClick={ev => handleDialog()}>
+        Back to Hotels List
+      </Button>
     </Dialog>
   );
 };

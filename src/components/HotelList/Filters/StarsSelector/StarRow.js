@@ -21,8 +21,12 @@ const styles = theme => ({
 class StarRow extends Component {
   constructor(props) {
     super(props);
+    const {
+      row,
+      hotels: { stars },
+    } = props;
     this.state = {
-      ckecked: false,
+      checked: stars.includes(row + 1),
     };
   }
 
@@ -44,6 +48,7 @@ class StarRow extends Component {
 
   render() {
     const { classes } = this.props;
+    const { checked } = this.state;
     return (
       <FormControlLabel
         control={
@@ -53,6 +58,7 @@ class StarRow extends Component {
               checked: classes.checked,
             }}
             value="checked"
+            checked={checked}
             onChange={ev => this.handleChange('chacked')}
           />
         }

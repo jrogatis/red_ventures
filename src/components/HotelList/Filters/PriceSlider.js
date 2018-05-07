@@ -68,7 +68,7 @@ const PriceSlider = props => {
         ]}
         railStyle={{ backgroundColor: '#F98100' }}
         step={0.01}
-        defaultValue={[minPrice, maxPrice]}
+        defaultValue={[minFilter, maxFilter]}
       />
       <Grid container direction="row" justify="space-between" wrap="nowrap">
         <RangeValueText direction="left" classes={classes} value={minFilter} label={'Min'} />

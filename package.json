@@ -10,6 +10,10 @@
   },
   "dependencies": {
     "@material-ui/icons": "^1.0.0-beta.43",
+    "@vx/group": "0.0.161",
+    "@vx/mock-data": "0.0.161",
+    "@vx/scale": "0.0.161",
+    "@vx/shape": "0.0.162",
     "autoprefixer": "7.1.6",
     "axios": "^0.18.0",
     "babel-core": "6.26.0",

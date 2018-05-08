@@ -122,6 +122,24 @@ module.exports = {
         // match the requirements. When no loader matches it will fall
         // back to the "file" loader at the end of the loader list.
         oneOf: [
+          {
+            // Match woff2 in addition to patterns like .woff?v=1.1.1.
+            test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+            use: {
+              loader: require.resolve('url-loader'),
+              options: {
+                // Limit at 50k. Above that it emits separate files
+                limit: 10000,
+
+                // url-loader sets mimetype if it's passed.
+                // Without this it derives it from the file extension
+                mimetype: 'application/font-woff',
+
+                // Output below fonts directory
+                name: 'static/fonts/[name].[ext]',
+              },
+            },
+          },
           // "url" loader works just like "file" loader but it also embeds
           // assets smaller than specified size as data URLs to avoid requests.
           {
@@ -317,9 +335,6 @@ module.exports = {
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new GoogleFontsPlugin({
-      fonts: [{ family: 'Heebo', outputDir: 'public/fonts', variants: ['400'] }],
-    }),
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.

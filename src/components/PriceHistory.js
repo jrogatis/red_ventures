@@ -25,14 +25,15 @@ const axisTheme = {
   },
 };
 
-const Graph = props => {
+const PriceHistory = props => {
   const { values, height, width } = props;
+  console.log(props);
   return (
     <VictoryChart
       domainPadding={40}
-      height={height}
+      height={250}
       width={width}
-      containerComponent={<VictoryContainer responsive={false} />}
+      containerComponent={<VictoryContainer height={250} width={width} responsive={false} />}
     >
       <VictoryBar
         data={values}
@@ -55,9 +56,10 @@ const Graph = props => {
     </VictoryChart>
   );
 };
-const PriceHistory = props => {
+
+/*const PriceHistory2 = props => {
   return Graph(props);
-};
+};*/
 
 PriceHistory.propTypes = {
   classes: PropTypes.object.isRequired,

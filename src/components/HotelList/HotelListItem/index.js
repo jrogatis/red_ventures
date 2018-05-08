@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
 import { CardMedia } from 'material-ui/Card';
-import { Grid, Paper } from 'material-ui';
+import { Grid, Paper, Button, Typography } from 'material-ui';
 import PropTypes from 'prop-types';
 import ContainerDimensions from 'react-container-dimensions';
 
@@ -43,6 +43,10 @@ const styles = theme => ({
     boxShadow:
       '0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)',
   },
+  titleButton: {
+    margin: theme.spacing.unit,
+    textTransform: 'none',
+  },
 });
 
 class HotelItem extends Component {
@@ -58,6 +62,28 @@ class HotelItem extends Component {
     this.setState({ showGraph: !showGraph });
   }
 
+  renderHistoryTitle() {
+    const { classes } = this.props;
+    return (
+      <Grid
+        container
+        direction="row"
+        wrap="nowrap"
+        justify="space-around"
+        alignItems="center"
+        spacing={16}
+      >
+        <Grid item>
+          <Typography>PRICE HISTORY FOR 2017</Typography>
+        </Grid>
+        <Grid item>
+          <Button className={classes.titleButton} onClick={() => this.handleShowGraph()}>
+            Back to descrition
+          </Button>
+        </Grid>
+      </Grid>
+    );
+  }
   render() {
     const { classes, hotel, days } = this.props;
     const { showGraph } = this.state;
@@ -71,12 +97,18 @@ class HotelItem extends Component {
             {!showGraph ? (
               <HotelCard hotel={hotel} days={days} showGraph={() => this.handleShowGraph()} />
             ) : (
-              <ContainerDimensions>
-                <PriceHistory
-                  values={hotel.price_history}
-                  style={{ maxHeight: 200, height: 200 }}
-                />
-              </ContainerDimensions>
+              // <ContainerDimensions>
+              <Grid container key={hotel.name} direction="column" wrap="nowrap">
+                <Grid item>{this.renderHistoryTitle()}</Grid>
+                <Grid item>
+                  <ContainerDimensions>
+                    <PriceHistory
+                      values={hotel.price_history}
+                      showGraph={() => this.handleShowGraph()}
+                    />
+                  </ContainerDimensions>
+                </Grid>
+              </Grid>
             )}
           </Grid>
         </Grid>

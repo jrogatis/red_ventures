@@ -7,7 +7,7 @@ import Toolbar from 'material-ui/Toolbar';
 import { CardMedia } from 'material-ui/Card';
 
 import AppBarButtons from './AppBarButtons';
-import crown from '../../images/crown-white-min.jpg';
+import crown from '../../images/crown-white-min2.jpg';
 import Footer from '../Footer';
 import DateSelector from '../DateSelector';
 import HotelsList from '../HotelList';

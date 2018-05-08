@@ -124,7 +124,7 @@ module.exports = {
         oneOf: [
           {
             // Match woff2 in addition to patterns like .woff?v=1.1.1.
-            test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+            test: [/\.woff/, /\.woff2/],
             use: {
               loader: require.resolve('url-loader'),
               options: {
@@ -228,7 +228,7 @@ module.exports = {
             // it's runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
+            exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/, /\.woff/, /\.woff2/],
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
             },

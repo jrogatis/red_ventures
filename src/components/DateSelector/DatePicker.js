@@ -13,6 +13,13 @@ import { fetchHotels, fetchDateRange } from '../../actions';
 import 'react-day-picker/lib/style.css';
 
 const styles = theme => ({
+  root: {
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column-reverse',
+      alignItems: 'center',
+      justify: 'space-around',
+    },
+  },
   button: {
     margin: theme.spacing.unit,
     borderRadius: '25px',
@@ -31,6 +38,11 @@ const styles = theme => ({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
+  },
+  left: {
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'row',
+    },
   },
 });
 
@@ -56,17 +68,44 @@ class DatePicker extends Component {
     const { from, to } = this.state;
     const { classes } = this.props;
     return (
-      <Grid container justify="center" direction="column">
-        <DateFieldsText id="CHECK-IN" label="CHECK-IN" value={moment(from).format('MMM DD YYYY')} />
-        <DateFieldsText id="CHECK-OUT" label="CHECK-OUT" value={moment(to).format('MMM DD YYYY')} />
-        <Button
-          variant="flat"
-          className={classes.button}
-          disabled={!(from && to)}
-          onClick={() => this.props.fetchHotels()}
-        >
-          Search hotels
-        </Button>
+      <Grid
+        container
+        justify="center"
+        direction="column"
+        className={classes.left}
+        wrap="nowrap"
+        alignItems="center"
+      >
+        <Grid item xs>
+          <Grid container justify="center" direction="column" className={classes.left}>
+            <Grid container justify="center" direction="column" className={classes.left}>
+              <DateFieldsText
+                id="CHECK-IN"
+                label="CHECK-IN"
+                value={moment(from).format('MMM DD YYYY')}
+              />
+              <DateFieldsText
+                id="CHECK-OUT"
+                label="CHECK-OUT"
+                value={moment(to).format('MMM DD YYYY')}
+              />
+            </Grid>
+          </Grid>
+          <Grid item xs>
+            <Grid container justify="center" direction="column" alignItems="center">
+              <Grid item>
+                <Button
+                  variant="flat"
+                  className={classes.button}
+                  disabled={!(from && to)}
+                  onClick={() => this.props.fetchHotels()}
+                >
+                  Search hotels
+                </Button>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
       </Grid>
     );
   }
@@ -113,8 +152,16 @@ class DatePicker extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
-      <Grid container direction="row" justify="center" spacing={16} wrap="nowrap">
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        spacing={16}
+        wrap="nowrap"
+        className={classes.root}
+      >
         {this.renderLeft()}
         {this.renderDayPicker()}
       </Grid>

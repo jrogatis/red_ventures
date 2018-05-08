@@ -6,7 +6,7 @@ import DatePicker from './DatePicker';
 
 const styles = theme => ({
   root: {
-    marginTop: '-20%',
+    marginTop: '-10%',
     marginBottom: '2%',
     borderRadius: '5px',
     padding: '4% 8%',

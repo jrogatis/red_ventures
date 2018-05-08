@@ -2,6 +2,7 @@ import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import { CardActions } from 'material-ui/Card';
 import { Button } from 'material-ui';
+import PropTypes from 'prop-types';
 
 const styles = theme => ({
   buttonPrice: {
@@ -24,17 +25,22 @@ const styles = theme => ({
 });
 
 const HotelCardActions = props => {
-  const { classes } = props;
+  const { classes, showGraph } = props;
   return (
     <CardActions>
       <Button size="small" className={classes.buttonBook}>
         Book Now
       </Button>
-      <Button size="small" className={classes.buttonPrice}>
+      <Button size="small" onClick={ev => showGraph()} className={classes.buttonPrice}>
         Price history
       </Button>
     </CardActions>
   );
+};
+
+HotelCardActions.propTypes = {
+  classes: PropTypes.object.isRequired,
+  showGraph: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(HotelCardActions);

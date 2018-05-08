@@ -17,11 +17,11 @@ const styles = theme => ({
 });
 
 const HotelCard = props => {
-  const { hotel, days, classes } = props;
+  const { hotel, days, classes, showGraph } = props;
   return (
     <Grid container direction="row" wrap="nowrap" alignItems="center" className={classes.root}>
       <Grid item xs sm={9} md={9} lg={10}>
-        <HotelCardContent hotel={hotel} />
+        <HotelCardContent hotel={hotel} showGraph={() => showGraph()} />
       </Grid>
       <Grid item xs md lg>
         <HotelPriceItem price={hotel.price} days={days} />
@@ -32,6 +32,9 @@ const HotelCard = props => {
 
 HotelCard.propTypes = {
   classes: PropTypes.object.isRequired,
+  showGraph: PropTypes.func.isRequired,
+  hotel: PropTypes.object.isRequired,
+  days: PropTypes.number.isRequired,
 };
 
 export default withStyles(styles)(HotelCard);

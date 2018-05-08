@@ -8,7 +8,7 @@ import HotelCardActions from './HotelCardActions';
 const styles = theme => ({});
 
 const HotelCardContent = props => {
-  const { hotel } = props;
+  const { hotel, showGraph } = props;
   return (
     <Grid container direction="column" wrap="nowrap">
       <Stars rate={hotel.rate} />
@@ -18,13 +18,14 @@ const HotelCardContent = props => {
       <Typography paragraph variant="subheading" color="textSecondary">
         {hotel.description}
       </Typography>
-      <HotelCardActions />
+      <HotelCardActions showGraph={() => showGraph()} />
     </Grid>
   );
 };
 
 HotelCardContent.propTypes = {
   classes: PropTypes.object.isRequired,
+  showGraph: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(HotelCardContent);

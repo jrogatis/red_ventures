@@ -74,5 +74,8 @@ const HotelPriceItem = props => {
 
 HotelPriceItem.propTypes = {
   classes: PropTypes.object.isRequired,
+  price: PropTypes.number.isRequired,
+  days: PropTypes.number.isRequired,
 };
+
 export default withStyles(styles)(HotelPriceItem);

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
 import { CardMedia } from 'material-ui/Card';
 import { Grid, Paper } from 'material-ui';
 import PropTypes from 'prop-types';
+import ContainerDimensions from 'react-container-dimensions';
+
 import HotelCard from './HotelCard';
+import PriceHistory from '../../PriceHistory';
 
 const styles = theme => ({
   root: {
@@ -42,21 +45,45 @@ const styles = theme => ({
   },
 });
 
-const HotelItem = props => {
-  const { classes, hotel, days } = props;
-  return (
-    <Paper elevation={4} className={classes.root}>
-      <Grid container className={classes.content} key={hotel.name} direction="row" wrap="nowrap">
-        <Grid item xs sm={4} md={3} lg={2}>
-          <CardMedia className={classes.image} image={hotel.image} title={hotel.name} />
+class HotelItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showGraph: false,
+    };
+  }
+
+  handleShowGraph() {
+    const { showGraph } = this.state;
+    this.setState({ showGraph: !showGraph });
+  }
+
+  render() {
+    const { classes, hotel, days } = this.props;
+    const { showGraph } = this.state;
+    return (
+      <Paper elevation={4} className={classes.root}>
+        <Grid container className={classes.content} key={hotel.name} direction="row" wrap="nowrap">
+          <Grid item xs sm={4} md={3} lg={2}>
+            <CardMedia className={classes.image} image={hotel.image} title={hotel.name} />
+          </Grid>
+          <Grid item xs sm md lg>
+            {!showGraph ? (
+              <HotelCard hotel={hotel} days={days} showGraph={() => this.handleShowGraph()} />
+            ) : (
+              <ContainerDimensions>
+                <PriceHistory
+                  values={hotel.price_history}
+                  style={{ maxHeight: 200, height: 200 }}
+                />
+              </ContainerDimensions>
+            )}
+          </Grid>
         </Grid>
-        <Grid item xs sm md lg>
-          <HotelCard hotel={hotel} days={days} />
-        </Grid>
-      </Grid>
-    </Paper>
-  );
-};
+      </Paper>
+    );
+  }
+}
 
 HotelItem.propTypes = {
   classes: PropTypes.object.isRequired,

@@ -26,7 +26,7 @@ const axisTheme = {
 };
 
 const PriceHistory = props => {
-  const { values, height, width } = props;
+  const { values, width } = props;
   return (
     <VictoryChart
       domainPadding={40}

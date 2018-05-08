@@ -7,7 +7,7 @@ import Toolbar from 'material-ui/Toolbar';
 import { CardMedia } from 'material-ui/Card';
 
 import AppBarButtons from './AppBarButtons';
-import crown from '../../images/hero.png';
+import crown from '../../images/hero2.png';
 import Footer from '../Footer';
 import DateSelector from '../DateSelector';
 import HotelsList from '../HotelList';
@@ -18,7 +18,7 @@ const styles = theme => ({
   },
   media: {
     height: 0,
-    paddingTop: '38.25%', // 16:9
+    paddingTop: '38.25%',
     marginTop: '-60px',
   },
   appBar: {

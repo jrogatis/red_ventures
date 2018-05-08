@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import { VictoryBar, VictoryChart, VictoryContainer, VictoryAxis } from 'victory';
+import { VictoryBar, VictoryChart, VictoryContainer, VictoryAxis, VictoryTooltip } from 'victory';
 
 const styles = theme => ({});
 
@@ -27,26 +27,26 @@ const axisTheme = {
 
 const PriceHistory = props => {
   const { values, height, width } = props;
-  console.log(props);
   return (
     <VictoryChart
       domainPadding={40}
       height={250}
       width={width}
-      containerComponent={<VictoryContainer height={250} width={width} responsive={false} />}
+      containerComponent={<VictoryContainer responsive={false} />}
     >
       <VictoryBar
+        labelComponent={<VictoryTooltip />}
         data={values}
         x="month"
         y={d => d.value}
         style={graphTeme}
         animate={{
           onExit: {
-            duration: 500,
+            duration: 250,
             before: () => ({ opacity: 0.3, _y: 0 }),
           },
           onEnter: {
-            duration: 500,
+            duration: 250,
             before: () => ({ opacity: 0.3, _y: 0 }),
             after: datum => ({ opacity: 1, _y: datum._y }),
           },
@@ -56,10 +56,6 @@ const PriceHistory = props => {
     </VictoryChart>
   );
 };
-
-/*const PriceHistory2 = props => {
-  return Graph(props);
-};*/
 
 PriceHistory.propTypes = {
   classes: PropTypes.object.isRequired,

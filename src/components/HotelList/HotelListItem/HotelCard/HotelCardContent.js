@@ -5,14 +5,18 @@ import { Typography, Grid } from 'material-ui';
 import Stars from './Stars';
 import HotelCardActions from './HotelCardActions';
 
-const styles = theme => ({});
+const styles = theme => ({
+  hotelName: {
+    color: theme.palette.primary.light,
+  },
+});
 
 const HotelCardContent = props => {
-  const { hotel, showGraph } = props;
+  const { hotel, showGraph, classes } = props;
   return (
     <Grid container direction="column" wrap="nowrap">
       <Stars rate={hotel.rate} />
-      <Typography style={{ color: '#F98100' }} variant="headline">
+      <Typography className={classes.hotelName} variant="headline">
         {hotel.name}
       </Typography>
       <Typography paragraph variant="subheading" color="textSecondary">

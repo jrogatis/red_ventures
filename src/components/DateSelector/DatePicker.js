@@ -3,12 +3,11 @@ import Helmet from 'react-helmet';
 import DayPicker, { DateUtils } from 'react-day-picker';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import moment from 'moment';
-import { Button, Grid } from 'material-ui';
+import { Grid } from 'material-ui';
 import { connect } from 'react-redux';
 
-import DateFieldsText from './DateFieldsText';
-import { fetchHotels, fetchDateRange } from '../../actions';
+import { fetchDateRange } from '../../actions';
+import LeftBox from './LeftBox';
 
 import 'react-day-picker/lib/style.css';
 
@@ -64,52 +63,6 @@ class DatePicker extends Component {
     this.setState(range);
   }
 
-  renderLeft() {
-    const { from, to } = this.state;
-    const { classes } = this.props;
-    return (
-      <Grid
-        container
-        justify="center"
-        direction="column"
-        className={classes.left}
-        wrap="nowrap"
-        alignItems="center"
-      >
-        <Grid item xs>
-          <Grid container justify="center" direction="column" className={classes.left}>
-            <Grid container justify="center" direction="column" className={classes.left}>
-              <DateFieldsText
-                id="CHECK-IN"
-                label="CHECK-IN"
-                value={moment(from).format('MMM DD YYYY')}
-              />
-              <DateFieldsText
-                id="CHECK-OUT"
-                label="CHECK-OUT"
-                value={moment(to).format('MMM DD YYYY')}
-              />
-            </Grid>
-          </Grid>
-          <Grid item xs>
-            <Grid container justify="center" direction="column" alignItems="center">
-              <Grid item>
-                <Button
-                  variant="flat"
-                  className={classes.button}
-                  disabled={!(from && to)}
-                  onClick={() => this.props.fetchHotels()}
-                >
-                  Search hotels
-                </Button>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
-    );
-  }
-
   renderDayPicker() {
     const { from, to } = this.state;
     const modifiers = { start: from, end: to };
@@ -153,6 +106,7 @@ class DatePicker extends Component {
 
   render() {
     const { classes } = this.props;
+    const { from, to } = this.state;
     return (
       <Grid
         container
@@ -162,7 +116,7 @@ class DatePicker extends Component {
         wrap="nowrap"
         className={classes.root}
       >
-        {this.renderLeft()}
+        <LeftBox from={from} to={to} />
         {this.renderDayPicker()}
       </Grid>
     );
@@ -177,6 +131,4 @@ const mapStateToProps = ({ hotels, dateRanges }) => ({
   hotels,
 });
 
-export default connect(mapStateToProps, { fetchHotels, fetchDateRange })(
-  withStyles(styles)(DatePicker),
-);
+export default connect(mapStateToProps, { fetchDateRange })(withStyles(styles)(DatePicker));

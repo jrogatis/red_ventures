@@ -15,17 +15,18 @@ import HotelsList from '../HotelList';
 const styles = theme => ({
   root: {
     margin: '0,0,10,0',
-  },
-  media: {
-    height: 0,
-    paddingTop: '38.25%',
-    marginTop: '-60px',
+    backgroundImage: `url(${crown})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'top',
   },
   appBar: {
     backgroundColor: 'transparent',
   },
   button: {
     textTransform: 'none',
+  },
+  details: {
+    display: 'block',
   },
 });
 
@@ -39,9 +40,10 @@ class FrontPage extends Component {
             <AppBarButtons />
           </Toolbar>
         </AppBar>
-        <CardMedia className={classes.media} image={crown} />
-        <DateSelector />
-        <HotelsList />
+        <div className={classes.details}>
+          <DateSelector />
+          <HotelsList />
+        </div>
         <Footer />
       </Paper>
     );

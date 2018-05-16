@@ -57,7 +57,8 @@ class DatePicker extends Component {
     };
   }
 
-  handleDayClick(day) {
+  handleDayClick(day, { selected, disabled }) {
+    if (disabled) return;
     const range = DateUtils.addDayToRange(day, this.state);
     this.props.fetchDateRange(range);
     this.setState(range);
@@ -67,14 +68,16 @@ class DatePicker extends Component {
     const { from, to } = this.state;
     const modifiers = { start: from, end: to };
     const { numberOfMonths } = this.props;
+    const today = new Date();
     return (
       <div>
         <DayPicker
+          disabledDays={{ before: today }}
           className="Selectable"
           numberOfMonths={numberOfMonths}
           selectedDays={[from, { from, to }]}
           modifiers={modifiers}
-          onDayClick={day => this.handleDayClick(day)}
+          onDayClick={(day, ...args) => this.handleDayClick(day, ...args)}
         />
         <Helmet>
           <style>{`

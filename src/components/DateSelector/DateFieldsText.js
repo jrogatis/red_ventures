@@ -17,8 +17,7 @@ const styles = theme => ({
 });
 
 const DateFields = props => {
-  const { classes, label, value, placeholder, id } = props;
-
+  const { classes, label, value, id } = props;
   return (
     <form className={classes.container} noValidate>
       <TextField
@@ -29,7 +28,6 @@ const DateFields = props => {
         value={value}
         className={classes.textField}
         margin="normal"
-        placeholder={placeholder}
         disabled
       />
     </form>
@@ -38,6 +36,7 @@ const DateFields = props => {
 
 DateFields.propTypes = {
   classes: PropTypes.object.isRequired,
+  label: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(DateFields);

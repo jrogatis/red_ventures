@@ -4,7 +4,6 @@ import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-import windowSize from 'react-window-size';
 
 import AppBarButtons from './AppBarButtons';
 import hero from '../../images/hero-croped.jpg';
@@ -34,9 +33,9 @@ const styles = theme => ({
     height: 'auto',
     width: '100%',
     marginTop: '-100px',
-    display: 'inline-block',
+    display: 'block',
     paddingTop: '44.25%',
-    fontSize: '120%',
+    fontSize: '130%',
     [theme.breakpoints.down('lg')]: {
       fontSize: '100%',
     },

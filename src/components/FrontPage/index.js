@@ -64,7 +64,7 @@ const styles = theme => ({
       top: '15%',
     },
     [theme.breakpoints.down('xs')]: {
-      top: '6%',
+      top: '9%',
     },
   },
   crown: {

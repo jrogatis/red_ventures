@@ -94,12 +94,12 @@ class DatePicker extends Component {
               .Selectable .DayPicker-Day--start {
                 border-top-left-radius: 50% !important;
                 border-bottom-left-radius: 50% !important;
-                  background-color: #79BD1A !important;
+                background-color: #79BD1A !important;
               }
               .Selectable .DayPicker-Day--end {
                 border-top-right-radius: 50% !important;
                 border-bottom-right-radius: 50% !important;
-                  background-color: #79BD1A !important;
+                background-color: #79BD1A !important;
               }
             `}</style>
         </Helmet>

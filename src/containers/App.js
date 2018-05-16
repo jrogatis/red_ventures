@@ -20,7 +20,6 @@ if (process.env.NODE_ENV !== 'production') {
   middlewares = [reduxPromise];
 }
 export const store = createStore(reducers, applyMiddleware(...middlewares));
-// const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
 class App extends Component {
   render() {

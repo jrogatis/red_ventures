@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Grid, Typography, Button, Hidden } from 'material-ui';
 import FilterIcon from '@material-ui/icons/Filter';
 import moment from 'moment';
+import { animateScroll as scroll } from 'react-scroll';
 
 import HotelItem from './HotelListItem';
 import ListFilters from './Filters';
@@ -36,6 +37,14 @@ class HotelsList extends Component {
     };
   }
 
+  componentDidUpdate() {
+    const {
+      hotels: { hotels },
+      dateRanges: { dateRange },
+    } = this.props;
+    if (hotels && dateRange) scroll.scrollTo(1000);
+  }
+
   handleDialog = () => {
     const { dialogOpen } = this.state;
     this.setState({
@@ -63,7 +72,7 @@ class HotelsList extends Component {
             <FilterIcon />
           </Button>
         </Hidden>
-        <Grid container direction="column" wrap="nowrap" alignItems="center">
+        <Grid container direction="column" wrap="nowrap" alignItems="center" ref={'hotelList'}>
           <Typography align="center" variant="display1">
             Best choices between {moment(dateRange.from).format('MMM DD')} and {''}
             {moment(dateRange.to).format('MMM DD')}

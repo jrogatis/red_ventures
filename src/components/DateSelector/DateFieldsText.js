@@ -29,6 +29,9 @@ const DateFields = props => {
         className={classes.textField}
         margin="normal"
         disabled
+        InputProps={{
+          disableUnderline: true,
+        }}
       />
     </form>
   );

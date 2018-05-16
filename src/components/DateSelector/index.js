@@ -6,7 +6,14 @@ import DatePicker from './DatePicker';
 
 const styles = theme => ({
   root: {
-    marginTop: '-10%',
+    marginTop: '-20%',
+    [theme.breakpoints.down('lg')]: {
+      marginTop: '-15%',
+    },
+    [theme.breakpoints.down('xs')]: {
+      marginTop: '-5%',
+      padding: '2% 2%',
+    },
     marginBottom: '2%',
     borderRadius: '5px',
     padding: '4% 8%',

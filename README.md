@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
-
 # Red - Ventures
 
 ## Reasoning
@@ -14,13 +12,16 @@ A live version: https://redventures.herokuapp.com/ I got an average of 88,4 for 
 
 ```bash
 
-git clone <https://github.com/jrogatis/red_ventures.git>
+git clone https://github.com/jrogatis/red_ventures.git
 cd red_ventures
 npm install
 
 ```
 
 ### running a local dev enviroment 
+
 ```bash
 npm start
-```
+
+
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).

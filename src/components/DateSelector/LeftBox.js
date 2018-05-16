@@ -89,8 +89,6 @@ const LeftBox = props => {
 
 LeftBox.propTypes = {
   classes: PropTypes.object.isRequired,
-  from: PropTypes.object.isRequired,
-  to: PropTypes.object.isRequired,
   fetchHotels: PropTypes.func.isRequired,
 };
 
